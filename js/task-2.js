@@ -28,7 +28,10 @@ const images = [
 // Galeri öğelerini oluştur
 const gallery = document.querySelector('.gallery');
 
-// images dizisi üzerinden geçerek her bir resim için li öğesi oluştur
+// DocumentFragment oluştur
+const fragment = document.createDocumentFragment();
+
+// images dizisi üzerinden geçerek her bir resim için li öğesi oluştur ve fragment'e ekle
 images.forEach(image => {
   const li = document.createElement('li');
   const img = document.createElement('img');
@@ -36,5 +39,9 @@ images.forEach(image => {
   img.alt = image.alt;
 
   li.appendChild(img);
-  gallery.appendChild(li);
+  fragment.appendChild(li);
 });
+
+// Tek bir ekleme işlemiyle tüm öğeleri DOM'a ekle
+gallery.appendChild(fragment);
+
